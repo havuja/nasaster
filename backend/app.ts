@@ -6,7 +6,7 @@ import asteroidsRoutes from "./routes/asteroids";
 dotenv.config();
 const app: Express = express();
 
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 
 app.get("/", (req: Request, res: Response) => {
   res.jsonp({ message: "Ok" });
