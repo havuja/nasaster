@@ -17,12 +17,12 @@ const getAsteroids = async (
   startDate: string,
   endDate: string
 ): Promise<NasaApiResponse> => {
-  const params = {
-    method: "GET",
-    url: `${NASA_API}/feed`,
+  const requestConfig = {
     params: { api_key: API_KEY, start_date: startDate, end_date: endDate },
   };
-  return axios(params).then((response) => response.data);
+  return axios
+    .get(`${NASA_API}/feed`, requestConfig)
+    .then((response) => response.data);
 };
 
 const nasaApi = { getAsteroids };

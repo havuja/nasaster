@@ -3,7 +3,7 @@ import isBefore from "date-fns/isBefore";
 
 import nasaApi from "../services/nasaApi";
 import { validateDate, splitIntervals } from "../utilities/dateHelpers";
-import { NearEarthObject } from "../types/Nasa";
+import { NearEarthObjectsPerDay } from "../types/Nasa";
 
 type Query = {
   start_date: string;
@@ -38,7 +38,7 @@ router.get("/", async (req: Request, res: Response) => {
     .then((apiResponses) => {
       let elementTotalCount = 0;
       // Reduce all dates and near earth objects to one object
-      const nearEarthObjects: NearEarthObject = apiResponses.reduce(
+      const nearEarthObjects: NearEarthObjectsPerDay = apiResponses.reduce(
         (prev, curr) => {
           // add object count to total
           elementTotalCount += curr.element_count ?? 0;
