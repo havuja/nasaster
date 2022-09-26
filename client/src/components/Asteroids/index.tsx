@@ -12,7 +12,7 @@ function Asteroids() {
   const [startDate, setStartDate] = useState<string>();
   const [endDate, setEndDate] = useState<string>();
 
-  const { asteroids, fetchAsteroids, loading } = useAsteroid();
+  const { asteroids, fetchAsteroids, loading, error } = useAsteroid();
 
   const searchAsteroids = () => {
     if (startDate && endDate) {
@@ -58,6 +58,7 @@ function Asteroids() {
       >
         {loading ? "Searching.." : "Search"}
       </Button>
+      {error ? <div>Error happened. {error}</div> : null}
       {asteroids ? (
         <Table<NearEarthObjectTableData>
           headers={tableHeaders}
