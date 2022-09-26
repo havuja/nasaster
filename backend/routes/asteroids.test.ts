@@ -1,4 +1,4 @@
-import request from "supertest";
+import request from "supertest"; // eslint-disable-line camelcase
 
 import app from "../app";
 import nasaApi from "../services/nasaApi";
